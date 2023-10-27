@@ -30,3 +30,8 @@ let uppercaseName = fullName.toUpperCase();
 console.log (uppercaseName)
 
 let idx1 = fullName.indexOf("Dav")
+console.log(`Index 1: ${idx1}`);
+let idx2 = fullName.indexOf("ker");
+console.log (`Index 2: ${idx2}`);
+let idx3 =fullName.indexOf("xyz")
+console.log(`Index 3: ${idx3}`);
