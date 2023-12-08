@@ -15,3 +15,8 @@ console.log(`Minimum  Value: ${Number.MIN_VALUE}`);
 console.log(`Minimum Safe Integer: ${Number.Min_SAFE_INTEGER}`);
 console.log(`Maximum value; ${Number.MAX_VALUE}`);
 console.log(`Maximum SafeInteger: ${Number.MAX_SAFE_INTEGER}`);
+
+
+
+let bigInt1 = 1n;
+let bigInt = 1_560_000_000_000_000_000_000_000n;
