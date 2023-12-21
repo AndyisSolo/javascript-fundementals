@@ -23,7 +23,7 @@ console.log(`US Dollars: ${formatter1.format(monthlySalary)}`);
 
 console.log(`Us Dollars: ${formatter1.format(monthlySalary)}`);
 
-let formatter2 = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR'})
+let formatter2 = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR'}) 
 console.log(`Euros: ${formatter2.format(monthlySalary)}`);
 
 let formatter3= new Intl.NumberFormat('ja-JA', { style: 'currency', currency: 'JPY'})

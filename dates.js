@@ -19,3 +19,6 @@ console.log(`Hours: ${date6.getHours()}`);
 console.log(`Time: ${date5.getTime()}`)
 let date6 = new Date (0);
 console.log(date6.toUTCString())
+
+
+
