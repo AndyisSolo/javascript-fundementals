@@ -38,3 +38,6 @@ let val11 = (undefined === null);
 let val12 = (undefined === null);
 console.log(`val11 ${val11} val12 ${val12}`);
 
+
+
+
