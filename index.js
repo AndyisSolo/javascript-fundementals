@@ -1,4 +1,3 @@
-// Import Sample Data
 import employees from './data.json' assert { type: 'json' }
 
 import createPrompt from 'prompt-sync';
@@ -22,7 +21,6 @@ function getInput(promptText, validator, transformer) {
   return value;
 }
 
-// Validator functions ---------------------------------------------------
 
 const isStringInputValid = (input) => {
   return (input) ? true : false;
@@ -42,7 +40,6 @@ const isIntegerValid = (min, max) => {
   }
 }
 
-// Application commands --------------------------------------------------
 
 function listEmployees() {
   console.log(`Employee List ----------------------------`);
