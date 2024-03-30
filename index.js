@@ -8,84 +8,8 @@ import fs from 'node:fs/promises';
 let employees = [];
 let currencyData;
 
-// Currency data ---------------------------------------------------------
+ 
 
-const getCurrencyConversionData = async () => {
-  const headers = new Headers();
-  headers.append("apikey", "<INSERT YOUR API KEY>");
-  const options = {
-    method: "GET",
-    redirect: 'follow',
-    headers
-  };
-  const response = await fetch(`https://api.apilayer.com/exchangerates_data/latest?base=USD`, options);
-  if(!response.ok) {
-    throw new Error("Cannot fetch currency data.");
-  }
-  currencyData = await response.json();
-}
-
-const getSalary = (amountUSD, currency) => {
-  const amount = (currency === "USD") ? amountUSD : amountUSD * currencyData.rates[currency];
-  const formatter = Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: currency
-  });
-  return formatter.format(amount);
-}
-
-// Loading and writing data to the filesystem ----------------------------
-
-const loadData = async () => {
-  console.log("Loading employees.....");
-  try {
-    const fileData = await fs.readFile('./data.json');
-    employees = JSON.parse(fileData);
-  } catch (err) {
-    console.error("Cannot load in employees");
-    throw err;
-  }
-}
-
-const writeData = async () => {
-  console.log("Writing employees.....");
-  try {
-    await fs.writeFile('./data.json', JSON.stringify(employees, null, 2));
-  } catch (err) {
-    console.error("Cannot write employees data.");
-    throw err;
-  }
-}
-
-import createPrompt from 'prompt-sync';
-let prompt = createPrompt();
-
-const logEmployee = (employee) => {
-  Object.entries(employee).forEach(entry => {
-    if(entry[0] !== "salaryUSD" || entry[0] !== "localCurrency") {
-      console.log(`${entry[0]}: ${entry[1]}`);
-    }
-  });
-  console.log(`Salary USD: ${getSalary(employee.salaryUSD, "USD")}`);
-  console.log(`Local Salary: ${getSalary(employee.salaryUSD, employee.localCurrency)}`);
-}
-
-function getInput(promptText, validator, transformer) {
-  let value = prompt(promptText);
-  if (validator && !validator(value)) {
-    console.error(`--Invalid input`);
-    return getInput(promptText, validator, transformer);
-  }
-  if (transformer) {
-    return transformer(value);
-  }
-  return value;
-}
-
-const getNextEmployeeID = () => {
-  const maxID = Math.max(...employees.map(e => e.id));
-  return maxID + 1;
-}
 
 // Validator functions ---------------------------------------------------
 
